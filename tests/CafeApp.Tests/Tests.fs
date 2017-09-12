@@ -1,12 +1,21 @@
 module CafeApp.Tests
 
-open CafeApp
+open System
 open NUnit.Framework
 open Swensen.Unquote
 
-[<Test>]
-let ``hello returns 42`` () =
-  let result = Library.hello 42
-  printfn "%i" result
-  // Assert.AreEqual(42,result)
-  42 =! result
+open TestsDSL
+
+module OpenTabTests =
+  open Domain
+  open Events
+  open Commands
+  open States
+
+  [<Test>]
+  let ``can open a new tab`` () =
+    let tab = {Id = Guid.NewGuid (); TableNumber = 1}
+    Given (ClosedTab None)
+    |> When (OpenTab tab)
+    |> ThenStateShouldBe (OpenedTab tab)
+    |> WithEvents [TabOpened tab]
