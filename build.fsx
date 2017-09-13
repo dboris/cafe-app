@@ -119,7 +119,7 @@ Target "CopyBinaries" (fun _ ->
 // --------------------------------------------------------------------------------------
 // Clean build results
 
-let vsProjProps = 
+let vsProjProps =
 #if MONO
     [ ("DefineConstants","MONO"); ("Configuration", configuration) ]
 #else
@@ -350,8 +350,8 @@ Target "All" DoNothing
   ==> "Build"
   ==> "CopyBinaries"
   ==> "RunTests"
-  ==> "GenerateReferenceDocs"
-  ==> "GenerateDocs"
+//   ==> "GenerateReferenceDocs"
+//   ==> "GenerateDocs"
   ==> "NuGet"
   ==> "BuildPackage"
   ==> "All"
