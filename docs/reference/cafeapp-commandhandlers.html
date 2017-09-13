@@ -57,11 +57,11 @@
             evolve state command
           </code>
           <div class="tip" id="1">
-            <strong>Signature:</strong> state:States -&gt; command:Command -&gt; States * Event list<br />
+            <strong>Signature:</strong> state:States -&gt; command:Command -&gt; Result&lt;(States * Event list),Error&gt;<br />
                       </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/Update GitHome in build.fsx/CafeApp/tree/master/src/CafeApp/CommandHandlers.fs#L14-14" class="github-link">
+            <a href="https://github.com/Update GitHome in build.fsx/CafeApp/tree/master/src/CafeApp/CommandHandlers.fs#L22-22" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
@@ -75,11 +75,29 @@
             execute state command
           </code>
           <div class="tip" id="2">
-            <strong>Signature:</strong> state:&#39;?7542 -&gt; command:Command -&gt; Event list<br />
-                          <strong>Type parameters:</strong> '?7542          </div>
+            <strong>Signature:</strong> state:States -&gt; command:Command -&gt; Result&lt;Event list,Error&gt;<br />
+                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/Update GitHome in build.fsx/CafeApp/tree/master/src/CafeApp/CommandHandlers.fs#L9-9" class="github-link">
+            <a href="https://github.com/Update GitHome in build.fsx/CafeApp/tree/master/src/CafeApp/CommandHandlers.fs#L17-17" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)">
+            handleOpenTab tab _arg1
+          </code>
+          <div class="tip" id="3">
+            <strong>Signature:</strong> tab:Tab -&gt; _arg1:States -&gt; Result&lt;Event list,Error&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/Update GitHome in build.fsx/CafeApp/tree/master/src/CafeApp/CommandHandlers.fs#L12-12" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>

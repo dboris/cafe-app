@@ -11,6 +11,7 @@ module OpenTabTests =
   open Events
   open Commands
   open States
+  open Errors
 
   [<Test>]
   let ``can open a new tab`` () =
@@ -19,3 +20,10 @@ module OpenTabTests =
     |> When (OpenTab tab)
     |> ThenStateShouldBe (OpenedTab tab)
     |> WithEvents [TabOpened tab]
+
+  [<Test>]
+  let ``cannot open an already opened tab`` () =
+    let tab = {Id = Guid.NewGuid (); TableNumber = 1}
+    Given (OpenedTab tab)
+    |> When (OpenTab tab)
+    |> ShouldFailWith TabAlreadyOpened

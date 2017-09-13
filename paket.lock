@@ -1,8 +1,9 @@
 RESTRICTION: >= net45
 NUGET
   remote: https://www.nuget.org/api/v2
+    Chessie (0.6)
+      FSharp.Core
     FSharp.Core (4.1.18) - redirects: force
-    Unquote (3.2)
 
 GROUP Build
 NUGET
@@ -519,3 +520,4 @@ NUGET
   remote: https://www.nuget.org/api/v2
     NUnit (2.6.4)
     NUnit.Runners (2.6.4)
+    Unquote (3.2)
