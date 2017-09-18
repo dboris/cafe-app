@@ -11,13 +11,15 @@ open Errors
 
 let handleOpenTab tab = function
     | ClosedTab _ -> [TabOpened tab] |> ok
-    | _ -> TabAlreadyOpened |> fail
+    | _ -> fail TabAlreadyOpened
 
 let handlePlaceOrder order = function
     | OpenedTab _ -> 
         if List.isEmpty order.Food && List.isEmpty order.Drinks
         then fail CannotPlaceEmptyOrder
         else [OrderPlaced order] |> ok
+    | ClosedTab _ -> fail CannotOrderWithClosedTab
+    | PlacedOrder _ -> fail OrderAlreadyPlaced
     | _ -> failwith "TODO"
 
 let execute state = function

@@ -45,3 +45,17 @@ module PlaceOrderTests =
         Given (OpenedTab tab)
         |> When (PlaceOrder order)
         |> ShouldFailWith CannotPlaceEmptyOrder
+
+    [<Test>]
+    let ``cannot place order with a closed tab`` () =
+        let order = {order with Drinks = [coke]}
+        Given (ClosedTab None)
+        |> When (PlaceOrder order)
+        |> ShouldFailWith CannotOrderWithClosedTab
+
+    [<Test>]
+    let ``cannot place order multiple times`` () =
+        let order = {order with Drinks = [coke]}
+        Given (PlacedOrder order)
+        |> When (PlaceOrder order)
+        |> ShouldFailWith OrderAlreadyPlaced
