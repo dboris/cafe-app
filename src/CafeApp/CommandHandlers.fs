@@ -9,14 +9,20 @@ open Events
 open Commands
 open Errors
 
-let handleOpenTab tab =
-    function
+let handleOpenTab tab = function
     | ClosedTab _ -> [TabOpened tab] |> ok
     | _ -> TabAlreadyOpened |> fail
 
-let execute state command =
-    match command with
+let handlePlaceOrder order = function
+    | OpenedTab _ -> 
+        if List.isEmpty order.Food && List.isEmpty order.Drinks
+        then fail CannotPlaceEmptyOrder
+        else [OrderPlaced order] |> ok
+    | _ -> failwith "TODO"
+
+let execute state = function
     | OpenTab tab -> handleOpenTab tab state
+    | PlaceOrder order -> handlePlaceOrder order state
     | _ -> failwith "TODO"
 
 let evolve state command =
